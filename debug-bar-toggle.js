@@ -2,15 +2,30 @@
 (function() {
 
   (function($) {
-    var D, toggleCookie;
+    var D, setIndicator, toggleCookie;
     toggleCookie = function() {
-      var name;
+      var name, status;
       name = 'toggle-no-debug-bar';
       if ($.cookie(name)) {
-        return $.removeCookie(name);
+        $.removeCookie(name);
       } else {
-        return $.cookie(name, 1);
+        $.cookie(name, 1);
       }
+      status = $.cookie(name) ? 'off' : 'on';
+      return setIndicator(status);
+    };
+    setIndicator = function(status) {
+      var id, indicator, toggled;
+      id = 'wp-admin-bar-debug-bar-toggle';
+      toggled = $("#" + id);
+      if (typeof toggled.remove === "function") {
+        toggled.remove();
+      }
+      indicator = $('<li>');
+      indicator.attr('id', id);
+      indicator.html("Debug bar: " + status);
+      indicator.addClass('ab-item ab-empty-item');
+      return $('.ab-top-secondary').append(indicator);
     };
     D = 68;
     return $(function() {
