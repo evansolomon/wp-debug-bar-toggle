@@ -15,7 +15,15 @@
       return setIndicator(status);
     };
     setIndicator = function(status) {
-      var id, indicator, toggled;
+      var $el, content, id, indicator, statusClass, toggled;
+      statusClass = 'debug-bar-toggle-status';
+      $el = $('#wp-admin-bar-debug-bar > div:first');
+      if ($el.length) {
+        $el.addClass(statusClass);
+        if ($el.length) {
+          return $el.html("Debug: " + status);
+        }
+      }
       id = 'wp-admin-bar-debug-bar-toggle';
       toggled = $("#" + id);
       if (typeof toggled.remove === "function") {
@@ -23,9 +31,10 @@
       }
       indicator = $('<li>');
       indicator.attr('id', id);
-      indicator.html("Debug bar: " + status);
-      indicator.addClass('ab-item ab-empty-item');
-      return $('.ab-top-secondary').append(indicator);
+      content = $('<div>');
+      content.addClass("ab-item ab-empty-item " + statusClass);
+      content.html("Debug bar: " + status);
+      return $('.ab-top-secondary').append(indicator.append(content));
     };
     D = 68;
     return $(function() {
