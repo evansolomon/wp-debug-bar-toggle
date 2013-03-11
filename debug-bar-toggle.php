@@ -19,7 +19,7 @@ class Debug_Bar_Toggle {
 	}
 
 	private function __construct() {
-		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'init', array( $this, 'init' ), 9 );
 	}
 
 	function init() {
@@ -50,9 +50,7 @@ class Debug_Bar_Toggle {
 	function remove_debug_bar() {
 		global $debug_bar;
 
-		remove_action( 'admin_bar_menu', array( $debug_bar, 'admin_bar_menu' ), 1000 );
-		remove_action( 'admin_footer',   array( $debug_bar, 'render' ),         1000 );
-		remove_action( 'wp_footer',      array( $debug_bar, 'render' ),         1000 );
+		remove_action( 'admin_bar_init', array( $debug_bar, 'init' ) );
 	}
 }
 
