@@ -41,8 +41,8 @@ class Debug_Bar_Toggle {
 
 	function enqueue_script() {
 		// Register dependencies
-		wp_register_script( 'jquery-cookie',    plugins_url( 'jquery.cookie.js'       , __FILE__ ), array( 'jquery' ), null, true );
-		wp_register_script( 'jquery-keystroke', plugins_url( 'jquery.keystroke.min.js', __FILE__ ), array( 'jquery' ), null, true );
+		wp_register_script( 'jquery-cookie',    plugins_url( 'jquery.cookie.js' , __FILE__ ), array( 'jquery' ), null, true );
+		wp_register_script( 'jquery-keystroke', plugins_url( 'js-keystroke/min/jquery.keystroke.min.js', __FILE__ ), array( 'jquery' ), null, true );
 
 		wp_enqueue_script(  'debug-bar-toggle', plugins_url( 'debug-bar-toggle.js', __FILE__ ), array( 'jquery-cookie', 'jquery-keystroke' ), null, true );
 	}
