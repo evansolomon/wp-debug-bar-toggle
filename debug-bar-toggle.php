@@ -3,7 +3,7 @@
 /*
 Plugin Name: Debug Bar Toggle
 Description: Toggle the Debug Bar with a keystroke between requests
-Version: 1.0
+Version: 1.01
 Author: Evan Solomon
 Author URI: http://evansolomon.me
 */
